@@ -6,8 +6,8 @@ var mymap = L.map('map', {
   detectRetina: true
 });
 
-var dark = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png');
-dark.addTo(mymap);
+L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png').addTo(mymap);
+
 
 var airports = null;
 
@@ -72,8 +72,7 @@ function style(feature) {
 var states = null;
 states = L.geoJson.ajax("assets/us-states.geojson", {
   style: style,
-});
-states.addTo(mymap);
+}).addTo(mymap);
 
 var legend = L.control({
   position: 'topright'
@@ -96,7 +95,3 @@ legend.onAdd = function() {
 legend.addTo(mymap);
 
 L.control.scale({position: 'bottomleft'}).addTo(mymap);
-
-var popup = L.popup()
-    .setContent('<p> Thank you for viewing my map! </p>')
-    .openOn(mymap);
